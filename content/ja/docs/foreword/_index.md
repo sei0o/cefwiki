@@ -3,11 +3,11 @@ title: "はじめに"
 linkTitle: "はじめに"
 weight: 1
 description: >
-  CeforeとこのWikiについての大まかな説明。
+  Ceforeの大まかな説明。
 ---
 
 {{% pageinfo %}}
-TBW
+このWikiは非公式です。開発元のNICTやその他団体とは一切関係ありません。
 {{% /pageinfo %}}
 
 ## Ceforeとは
@@ -22,3 +22,7 @@ v0.8.3a
 ## Wikiについて
 
 しばらくは個人用です
+
+
+
+## 

@@ -6,7 +6,6 @@ description: >
   `cefnetd.conf` などを説明。
 ---
 
-Ceforeの設定ファイルは
+Ceforeの設定ファイルのフォーマットはバージョンごとに大きく異なります。
 
 ## `cefnetd.conf`
-

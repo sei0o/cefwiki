@@ -6,20 +6,16 @@ description: >
   Ceforeのツール群を扱います。
 ---
 
-{{% pageinfo %}}
-工事中
-{{% /pageinfo %}}
+## CCNinfo
 
-## Ceforeに同梱
+ネットワーク全体で、コンテンツを配信しているノードやキャッシュの様子を知るためのツールです。Request, Replyパケットという特殊なパケットを通じて情報を取得する。暫定的な仕様はIRTFの[draft-irtf-icnrg-ccninfo](https://datatracker.ietf.org/doc/draft-irtf-icnrg-ccninfo/)にまとめられています。
 
-### CCNinfo
-
-### 
+Ceforeでは、`cefinfo`コマンド（またはエイリアスの `ccninfo`コマンド）として実装されています。
 
 ## Cefore-Emu
+
+Python2系で動作するCeforeのエミュレータ。Mini-CCNx（開発停止）をベースに開発された。
 
 ## CeforeSim
 
 ## cefbabel
-
-?
