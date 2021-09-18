@@ -10,6 +10,12 @@ description: >
 
 プラグインには、cefnetdに適用されるものとcsmgrdに適用されるものがあります。
 
+{{% alert color="info" %}}
+
+[Ceforeチュートリアル](https://www.ieice.org/~icn/wp-content/uploads/2017/08/Cefore-tutorial.pdf)（公式資料）の15ページ以降も参照してください。
+
+{{% /alert %}}
+
 ## cefnetdに適用されるプラグイン
 
 src/plugin 以下。

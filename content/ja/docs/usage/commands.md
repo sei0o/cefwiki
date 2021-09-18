@@ -4,6 +4,7 @@ linkTitle: "コマンド"
 weight: 3
 description: >
   Ceforeで使えるコマンドの一覧。
+
 ---
 
 Ceforeをインストールすると、シェルから操作するためのコマンドが多数使えるようになります。Cefore-Emuなど、Cefore本体に同梱されていないツールのコマンドについては、それぞれのツールのページを参照してください。
@@ -12,15 +13,21 @@ Ceforeをインストールすると、シェルから操作するためのコ�
 
 ### `cefnetdstart`
 
+Ceforeを起動します。実体は短いシェルスクリプトです。
+
 ### `cefnetdstop`
 
+Ceforeを停止します。実体は短いシェルスクリプトです。
+
 ### `cefnetd`
+
+Cefore本体のバイナリです。
 
 ## 状態確認
 
 ### `cefstatus`
 
-出力の例を以下に示す。
+cefnetdの状態を出力します。出力の例を以下に示します。この例では、`ccn:/` prefixに対するInterestが`1.0.0.2:9896`で動作するノードに転送されるようになっています。
 
 ```
 $ cefstatus
@@ -56,9 +63,28 @@ PIT :
 
 ### `cefgetfile`
 
+prefixに対応するデータを要求するInterestを発行します。
+
+```shell
+# デフォルトではコンテンツ名と同じ名前のファイルに出力されます
+$ cefgetfile ccnx:/hoge
+
+# -f オプションで保存先を指定する
+$ cefgetfile ccnx:/hoge -f hoge_downloaded
+```
+
 ### `cefputfile`
 
+ファイルを送信できる状態にします。`cefgetfile`と対になるコマンドです。
+
+```shell
+# ./content にあるファイルを ccnx:/hoge で取得できるようにする
+$ cefputfile ccnx:/hoge -f ./content
+```
+
 ### `cefgetchunk`
+
+あるprefixの一部のチャンクだけを要求するInterestを発行します。
 
 ### `cefgetstream`
 
@@ -81,3 +107,5 @@ PIT :
 ### `cefroute`
 
 ### `cefctrl`
+
+ユーザが直接触れることは通常ありません。
