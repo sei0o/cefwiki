@@ -25,6 +25,13 @@ Ceforeを動かすには、手元のマシンでビルドする方法と、Docke
 | `--enable-ndn`     | NDNプラグインをビルドする               |
 
 3. `$ make && sudo make install` を実行する。
+4. バッファサイズを設定する。
+```sh
+$ sudo sysctl -w net.core.rmem_default=10000000
+$ sudo sysctl -w net.core.wmem_default=10000000
+$ sudo sysctl -w net.core.rmem_max=10000000
+$ sudo sysctl -w net.core.wmem_max=10000000
+```
 
 ## Dockerを使う
 
@@ -50,4 +57,4 @@ $ docker images
 - `cache`: ローカルキャッシュを持つイメージ。
 - `csmgr`: [csmgr](#)を使えるイメージ。
 
-csmgrはメモリが2GB以上ある環境で使うべきとされています。
+csmgrはメモリが4GB以上ある環境で使うべきとされています。

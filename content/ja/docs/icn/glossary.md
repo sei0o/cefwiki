@@ -47,4 +47,12 @@ FIB : 2
 ...(snip)...
 ```
 
-## 
+## Outgoing
+
+## Incoming
+
+## CS (Content Store)
+
+## FIB (Forwarding Interest Base)
+
+## PIT (Pending Interest Table)
