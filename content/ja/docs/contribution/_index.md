@@ -11,6 +11,8 @@ description: >
 未翻訳です
 {{% /pageinfo %}}
 
+- 目的の提示「〜します」, 指示「〜してください」
+
 We use [Hugo](https://gohugo.io/) to format and generate our website, the
 [Docsy](https://github.com/google/docsy) theme for styling and site structure, 
 and [Netlify](https://www.netlify.com/) to manage the deployment of the site. 

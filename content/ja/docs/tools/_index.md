@@ -10,7 +10,7 @@ description: >
 
 コンテンツを配信しているノード(publisher)までの経路やキャッシュの様子を知るためのツールです。Request, Replyパケットという特殊なパケットを通じて情報を取得します。暫定的な仕様はIRTFの[draft-irtf-icnrg-ccninfo](https://datatracker.ietf.org/doc/draft-irtf-icnrg-ccninfo/)にまとめられています。
 
-Ceforeでは、`cefinfo`コマンド（またはエイリアスの `ccninfo`コマンド）として実装されています。
+Ceforeでは、`cefinfo`コマンド（エイリアス： `ccninfo`）として実装されています。
 
 ## Cefore-Emu
 

@@ -17,7 +17,7 @@ cefnetdやcsmgrdのソースコードがあります。
 
 ### `tools/`
 
-各種コマンドのうち、C言語で実装されているものが入っています。
+各種コマンドのうち、C言語で実装されているものが入っています。Ceforeアプリの実装例として参考になります。
 
 ### `utils/`
 
@@ -30,3 +30,7 @@ cefnetdやcsmgrdのソースコードがあります。
 ### `apps/wireshark/`
 
 WiresharkでCCNのパケットを読むためのluaスクリプトが入っています。詳しくは[Wireshark](../tools/wireshark)を参照してください。
+
+## 構造体の命名規則
+- `CefC_`
+- `CefT_`

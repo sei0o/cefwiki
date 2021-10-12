@@ -21,13 +21,13 @@ Ceforeを停止します。実体は短いシェルスクリプトです。
 
 ### `cefnetd`
 
-Cefore本体のバイナリです。
+Cefore本体のバイナリです。上のコマンドは間接的に `cefnetd` を呼び出しています。
 
 ## 状態確認
 
 ### `cefstatus`
 
-cefnetdの状態を出力します。出力の例を以下に示します。この例では、`ccn:/` prefixに対するInterestが`1.0.0.2:9896`で動作するノードに転送されるようになっています。
+cefnetdの状態を出力します。出力の例を以下に示します。この例では、`ccnx:/` prefixに対するInterestが`1.0.0.2:9896`で動作するノードに転送されるようになっています。
 
 ```
 $ cefstatus
@@ -47,7 +47,7 @@ Faces : 7
 FIB(App) :
   Entry is empty
 FIB : 1
-  ccn:/
+  ccnx:/
     Faces : 16 (-s-)  
 PIT(App) :
   Entry is empty
