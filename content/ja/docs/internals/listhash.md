@@ -12,6 +12,43 @@ TODO: リストハッシュなんてものは存在しない？ハッシュテ�
 
 ## 操作のための関数
 
+```c:cef_hash.h
+
+CefT_Hash_Handle
+cef_lhash_tbl_create (
+	uint32_t table_size
+);
+
+CefT_Hash_Handle
+cef_lhash_tbl_create_u32 (
+	uint32_t table_size
+);
+
+void
+cef_lhash_tbl_destroy (
+	CefT_Hash_Handle handle
+);
+int
+cef_lhash_tbl_item_set (
+	CefT_Hash_Handle handle,
+	const unsigned char* key,
+	uint32_t klen,
+	void* elem
+);
+void*
+cef_lhash_tbl_item_get (
+	CefT_Hash_Handle handle,
+	const unsigned char* key,
+	uint32_t klen
+);
+void*
+cef_lhash_tbl_item_remove (
+	CefT_Hash_Handle handle,
+	const unsigned char* key,
+	uint32_t klen
+);
+```
+
 ## 内部構造
 ハッシュの計算はハッシュテーブルと同じ。
 

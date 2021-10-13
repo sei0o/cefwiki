@@ -43,7 +43,7 @@ TODO: FFI
 
 ## Pythonを使う
 
-**cefpyco**を使えば、Pythonでアプリを作成できます。
+**cefpyco**を使えば、Pythonでアプリを作成できます。Dockerイメージにはデフォルトでインストールされているので、すぐに使えます。
 
 {{% alert color="info" %}}
 
