@@ -55,6 +55,10 @@ FIB : 2
 
 ## FIB (Forwarding Interest Base)
 
+## RIB (Routing Interest Base)
+→FIB
+NDNにおいて経路情報を管理するもの。Cefore（CCN）でいうFIB。
+
 ## PIT (Pending Interest Table)
 
 ## AppComp

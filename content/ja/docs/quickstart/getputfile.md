@@ -69,7 +69,7 @@ c549ba77183d   tutorial_publisher_1   0.00%     1.18MiB / 15.55GiB    0.01%     
 67991cfb4878   tutorial_consumer_1    0.00%     1.023MiB / 15.55GiB   0.01%     5.77kB / 0B   0B / 0B      3
 ```
 
-consumer, publisherをシェルから操作できるようにします。端末を2つ立ち上げて、それぞれで次のコマンドを実行してください。
+consumer, publisherをシェルから操作できるようにします。端末を2つ立ち上げて、それぞれでDockerコンテナのシェルに接続します。
 ```shell
 // consumer （←以降、操作する端末をこのように表記します）
 $ docker exec -it tutorial_consumer_1 bash
@@ -83,7 +83,7 @@ Dockerを使わない場合は、2台PCを用意して、それぞれでCefore�
 ### FIBの設定
 **FIB (Forwarding Interest Base)** は、情報の名前（prefix）とそのありかの組み合わせを経路情報として記録するテーブルです。情報を取得するときには、ノード自身が持つFIBを参照して、転送先を決定します。転送されたノードは、自身の持っている情報であればそれを応答として返し、持っていなければまた自身のFIBを使ってたらい回しに転送します。
 
-さて、現状２つのノードはIPネットワークでは接続されているものの、Ceforeは互いを認識していません。これではICNによる通信ができないので、手動でFIBを設定します（あくまでCeforeはIPネットワーク上で動いているので、IPアドレスによって転送先を表現する必要があります）。consumerの端末にて、次のコマンドを実行してください。
+さて、現状２つのノードはIPネットワークでは接続されているものの、Ceforeは互いを認識していません。これではICNによる通信ができないので、手動でFIBを設定します（あくまでCeforeはIPネットワーク上で動いているので、IPアドレスによって転送先を表現する必要があります）。
 ```shell
 // consumer
 $ cefroute add ccnx:/example tcp 10.0.1.30
@@ -162,8 +162,6 @@ $ cefputfile ccnx:/example -f example
 [cefputfile] Duration   = 0.004 sec
 [cefputfile] Throughput = 34063 bps
 ```
-
-TODO: キャッシュ見る
 
 consumerノードでファイルを取得します。`Complete`が見えれば成功です。`Incomplete`が表示されると失敗です。
 ```shell
