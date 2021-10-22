@@ -40,44 +40,6 @@ ceforeソースコードの`tools/`以下のツール群の実装が参考にな
 #include <cefore/cef_client.h>
 #include <cefore/cef_frame.h>
 
-void *send_interest(CefT_Client_Handle fhdl, CefT_Interest_TLVs *params) {
-  cef_client_interest_input(fhdl, params);
-  fprintf(stderr, "Reading Chunk %d....\n", params->chunk_num);
-
-  void *payload = calloc(CefC_AppBuff_Size, 1);
-  unsigned char *buff = malloc(CefC_AppBuff_Size);
-  struct cef_app_frame *app_frame = malloc(sizeof(struct cef_app_frame));
-
-  int position = 0;
-  int payload_len = 0;
-  int end_chunk_num = INT32_MAX;
-  while (1) {
-    int size =
-        cef_client_read(fhdl, &buff[position], CefC_AppBuff_Size - position);
-
-    if (size > 0) {
-      int remaining = cef_client_payload_get_with_info(
-          &buff[position], CefC_AppBuff_Size - position, app_frame);
-      position = CefC_AppBuff_Size - remaining;
-      memcpy((void *)(payload + payload_len), app_frame->payload,
-             app_frame->payload_len);
-      payload_len += app_frame->payload_len;
-      end_chunk_num = app_frame->end_chunk_num;
-
-      fprintf(stderr, "Current position: %d\n", position);
-      fprintf(stderr, "Total Payload Length: %d\n", payload_len);
-    } else if (params->chunk_num == end_chunk_num) {
-      break;
-    } else {
-      params->chunk_num++;
-      cef_client_interest_input(fhdl, params);
-      fprintf(stderr, "Reading Chunk %d....\n", params->chunk_num);
-    }
-  }
-
-  return payload;
-}
-
 CefT_Client_Handle setup_client() {
   char config_path[1] = {0};
   int res = cef_client_init(CefC_Unset_Port, config_path);
@@ -121,6 +83,44 @@ CefT_Interest_TLVs generate_params(char *uri) {
   params.opt.lifetime_f = 0;
 
   return params;
+}
+
+void *send_interest(CefT_Client_Handle fhdl, CefT_Interest_TLVs *params) {
+  cef_client_interest_input(fhdl, params);
+  fprintf(stderr, "Reading Chunk %d....\n", params->chunk_num);
+
+  void *payload = calloc(CefC_AppBuff_Size, 1);
+  unsigned char *buff = malloc(CefC_AppBuff_Size);
+  struct cef_app_frame *app_frame = malloc(sizeof(struct cef_app_frame));
+
+  int position = 0;
+  int payload_len = 0;
+  int end_chunk_num = INT32_MAX;
+  while (1) {
+    int size =
+        cef_client_read(fhdl, &buff[position], CefC_AppBuff_Size - position);
+
+    if (size > 0) {
+      int remaining = cef_client_payload_get_with_info(
+          &buff[position], CefC_AppBuff_Size - position, app_frame);
+      position = CefC_AppBuff_Size - remaining;
+      memcpy((void *)(payload + payload_len), app_frame->payload,
+             app_frame->payload_len);
+      payload_len += app_frame->payload_len;
+      end_chunk_num = app_frame->end_chunk_num;
+
+      fprintf(stderr, "Current position: %d\n", position);
+      fprintf(stderr, "Total Payload Length: %d\n", payload_len);
+    } else if (params->chunk_num == end_chunk_num) {
+      break;
+    } else {
+      params->chunk_num++;
+      cef_client_interest_input(fhdl, params);
+      fprintf(stderr, "Reading Chunk %d....\n", params->chunk_num);
+    }
+  }
+
+  return payload;
 }
 
 int main(int argc, char **argv) {
